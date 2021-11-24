@@ -1,25 +1,18 @@
 
 public class Bins {
-    private Integer[] sums;
+    Integer[] bins;
 
-    public Bins(Integer startIndex, Integer endIndex) {
-        sums = newBin(startIndex, endIndex);
+    public Bins(Integer lowIndex, Integer highIndex) {
+        this.bins = new Integer[highIndex+1];
+        for(int i=lowIndex;i<highIndex+1;i++) bins[i]=0;
     }
 
-    public void incrementBin(Integer index){
-        sums[index]++;
+    public Integer getBin(Integer bin) {
+        return this.bins[bin];
     }
 
-    public Integer[] newBin(Integer startIndex, Integer endIndex) {
-        Integer[] bin = new Integer[endIndex+1];
-        for (Integer i = 0; i <= endIndex; i++) {
-            bin[i] = 0;
-        }
-        return bin;
-    }
-
-    public Integer[] getSums() {
-        return sums;
+    public void incrementBin(Integer bin) {
+        this.bins[bin]++;
     }
 
 }
