@@ -1,28 +1,20 @@
 import java.util.Random;
 
 public class Dice {
-    private Integer[] rolls;
+    Integer numDice;
 
-    public Dice(Integer numberOfDice) {
-        rolls = new Integer[numberOfDice];
+    public Dice() {
     }
 
-    public Integer[] getRolls() {
-        return rolls;
+    public Dice(Integer numDice) {
+        this.numDice=numDice;
     }
 
-    public Integer rollAndSum() {
-        Integer[] rolls = getRolls();
-        Integer sum = 0;
-        for (Integer i = 0; i < rolls.length; i++) {
-            rolls[i] = rollDie();
-            sum += rolls[i];
+    public Integer toss(){
+        Integer total=0;
+        for(int i=0;i<numDice;i++) {
+            total+=(int)(6*Math.random()+1);
         }
-        return sum;
-    }
-
-    public Integer rollDie() {
-        Random random = new Random();
-        return random.nextInt(6)+1;
+        return total;
     }
 }

@@ -5,29 +5,29 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class DiceTest {
+
     @Test
-    public void tossAndSumTest() {
-        //given
-        Integer numberOfDice = 1;
-        Dice dice = new Dice(numberOfDice);
-        Integer actual = dice.rollAndSum();
+    public void testToss2(){//given
+        Integer expectedMin=2;
+        Integer expectedMax=12;
+        Dice dice = new Dice(expectedMin);
         //when
-        Integer expected = dice.getRolls()[0];
+        Integer actual = dice.toss();
         //then
-        Assert.assertEquals(expected, actual);
+        Assert.assertTrue(actual>=expectedMin);
+        Assert.assertTrue(actual<=expectedMax);
     }
 
     @Test
-    public void dieRollTest() {
+    public void testToss5(){
         //given
-        Integer numberOfDice = 2;
-        Dice dice = new Dice(numberOfDice);
-        Integer lowestNumber = 0;
-        Integer highestNumber = 6;
+        Integer expectedMin=10;
+        Integer expectedMax=60;
+        Dice dice = new Dice(expectedMin);
         //when
-        Integer roll = dice.rollDie();
+        Integer actual = dice.toss();
         //then
-        Assert.assertFalse(roll < lowestNumber);
-        Assert.assertFalse(roll > highestNumber);
+        Assert.assertTrue(actual>=expectedMin);
+        Assert.assertTrue(actual<=expectedMax);
     }
 }
